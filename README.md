@@ -1,6 +1,6 @@
 # ExpandableLayout 
 
-A simple Expandable Layout, You can use it in ListView or RecyclerView.
+A simple Expandable Layout, You can use it in ListView or RecyclerView like CheckBox.
 Below is an example of a ExpandableLayout, what you need to do is just to set canExpand="true" to a child view.
 
     <com.sherlock.expandlayout.ExpandableLayout

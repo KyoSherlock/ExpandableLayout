@@ -2,9 +2,9 @@
 
 A simple Expandable Layout, You can use it in ListView or RecyclerView like CheckBox.
 
-<img src="http://g.picphotos.baidu.com/album/s=900;q=90/sign=b2e1ac2307e939015202813e4bd725da/4afbfbedab64034fb6c8d605a9c379310a551daf.jpg" alt="alt text" style="width:185;height:287">
+![alt text](http://g.picphotos.baidu.com/album/s=900;q=90/sign=b2e1ac2307e939015202813e4bd725da/4afbfbedab64034fb6c8d605a9c379310a551daf.jpg) 
 
-<img src="http://d.picphotos.baidu.com/album/s=900;q=90/sign=3386d605a9c3793179688a29dbffc678/b3b7d0a20cf431ad8099573a4d36acaf2edd986d.jpg" alt="alt text" style="width:185;height:315">
+![alt text](http://d.picphotos.baidu.com/album/s=900;q=90/sign=3386d605a9c3793179688a29dbffc678/b3b7d0a20cf431ad8099573a4d36acaf2edd986d.jpg) 
 
 # Usage
 

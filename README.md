@@ -4,7 +4,7 @@ A simple Expandable Layout, You can use it in ListView or RecyclerView like Chec
 
 ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png)
 
-![](http://d.picphotos.baidu.com/album/s=900;q=90/sign=3386d605a9c3793179688a29dbffc678/b3b7d0a20cf431ad8099573a4d36acaf2edd986d.jpg)
+![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/2.png)
 
 # Usage
 

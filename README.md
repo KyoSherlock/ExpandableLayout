@@ -2,7 +2,7 @@
 
 A simple Expandable Layout, You can use it in ListView or RecyclerView like CheckBox.
 
-![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png) ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/2.png)
+![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png) ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/3.png)
 
 # Usage
 

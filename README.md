@@ -32,5 +32,9 @@ Below is an example of a ExpandableLayout, what you need to do is just to set ca
             app:canExpand="true" />
     </com.sherlock.expandlayout.ExpandableLayout>
 
-        
-        
+# Changelog
+
+### Version: 1.0
+
+  * Initial Build
+

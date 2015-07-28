@@ -7,6 +7,7 @@ A simple Expandable Layout, You can use it in ListView or RecyclerView like Chec
 # Usage
 
 Below is an example of a ExpandableLayout, what you need to do is just to set canExpand="true" to a child view.
+
 	```xml
     <com.sherlock.expandlayout.ExpandableLayout
         android:id="@+id/expandlayout"

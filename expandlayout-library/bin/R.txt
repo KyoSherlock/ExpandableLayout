@@ -1,0 +1,3 @@
+int attr canExpand 0x7f010000
+int[] styleable ExpandableLayout { 0x7f010000 }
+int styleable ExpandableLayout_canExpand 0

@@ -1,6 +1,6 @@
 # ExpandableLayout 
 
-A simple Expandable Layout, You can use it in ListView or RecyclerView like CheckBox.
+A simple expandable layout that can be used in ListView and RecyclerView.
 
 ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png) ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/3.png)
 

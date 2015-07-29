@@ -6,7 +6,7 @@ This ExpandableLayout is like a smooth expand/collapse animation CheckBox, so it
 
 # Usage
 
-Below is an example of a ExpandableLayout, what you need to do is just to set canExpand="true" to a child view.
+Below is an example of a ExpandableLayout, what you need to do is just to set canExpand="true" to a child view/viewgroup.
 
     <com.sherlock.expandlayout.ExpandableLayout
         android:id="@+id/expandlayout"

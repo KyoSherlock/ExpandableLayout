@@ -1,6 +1,6 @@
 # ExpandableLayout 
 
-This ExpandableLayout is like a smooth expand/collapse animation CheckBox, so it can be used anyplace(ListView or RecyclerView).
+This ExpandableLayout is like a smooth expand/collapse animation CheckBox, so it can be used anyplace (ListView or RecyclerView).
 
 ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png) ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/3.png)
 

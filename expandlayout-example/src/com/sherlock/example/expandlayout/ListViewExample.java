@@ -1,8 +1,5 @@
 package com.sherlock.example.expandlayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +11,9 @@ import android.widget.ListView;
 
 import com.sherlock.expandlayout.ExpandableLayout;
 import com.sherlock.expandlayout.ExpandableLayout.OnExpandListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListViewExample extends Activity {
 
@@ -41,7 +41,7 @@ public class ListViewExample extends Activity {
 		@Override
 		public void onClick(View v) {
 			ViewHolder holder = (ViewHolder) v.getTag();
-			boolean result = holder.expandableLayout.toggle();
+			boolean result = holder.expandableLayout.toggleExpansion();
 			Info info = mInfos.get(holder.position);
 			info.isExpand = result ? !info.isExpand : info.isExpand;
 		}
@@ -50,12 +50,12 @@ public class ListViewExample extends Activity {
 	private OnExpandListener mOnExpandListener = new OnExpandListener() {
 		@Deprecated
 		@Override
-		public void onToggle(ExpandableLayout view, View child, boolean isExpand) {
+		public void onToggle(ExpandableLayout view, View child, boolean isExpanded) {
 		}
 
 		@Override
 		public void onExpandOffset(ExpandableLayout view, View child,
-				float offset, boolean toExpanding) {
+				float offset, boolean isExpanding) {
 			ViewHolder holder = (ViewHolder) view.getTag();
 			if (holder.position == mInfos.size() - 1) {
 				mListView.setSelection(holder.position);
@@ -108,7 +108,7 @@ public class ListViewExample extends Activity {
 			}
 			Info info = getItem(position);
 			holder.position = position;
-			holder.expandableLayout.setExpand(info.isExpand, false);
+			holder.expandableLayout.setExpanded(info.isExpand, false);
 			return view;
 		}
 	}

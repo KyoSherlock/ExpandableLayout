@@ -1,11 +1,11 @@
 package com.sherlock.example.expandlayout;
 
-import com.sherlock.expandlayout.ExpandableLayout;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+
+import com.sherlock.expandlayout.ExpandableLayout;
 
 public class LinearLayoutExample extends Activity {
 
@@ -21,7 +21,7 @@ public class LinearLayoutExample extends Activity {
 				new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						expandableLayout.toggle();
+						expandableLayout.toggleExpansion();
 					}
 				});
 	}

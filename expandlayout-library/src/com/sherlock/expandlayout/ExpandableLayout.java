@@ -65,7 +65,7 @@ public class ExpandableLayout extends LinearLayout {
 						"ExpandableView can't use weight");
 			}
 
-			if (!p.isOpen && !p.isExpanding) {
+			if (!p.isExpanded && !p.isExpanding) {
 				child.setVisibility(View.GONE);
 			} else {
 				child.setVisibility(View.VISIBLE);
@@ -104,7 +104,7 @@ public class ExpandableLayout extends LinearLayout {
 		}
 		if (child != null) {
 			LayoutParams p = (LayoutParams) child.getLayoutParams();
-			if (p.isOpen) {
+			if (p.isExpanded) {
 				p.height = p.originalHeight;
 				child.setVisibility(View.VISIBLE);
 			} else {
@@ -138,11 +138,11 @@ public class ExpandableLayout extends LinearLayout {
 		return p.canExpand;
 	}
 
-	public boolean isExpand() {
+	public boolean isExpanded() {
 		View child = findExpandableView();
 		if (child != null) {
 			LayoutParams p = (LayoutParams) child.getLayoutParams();
-			if (p.isOpen) {
+			if (p.isExpanded) {
 				return true;
 			}
 		}
@@ -152,32 +152,32 @@ public class ExpandableLayout extends LinearLayout {
 	/**
 	 * @return
 	 */
-	public boolean toggle() {
-		return this.setExpand(!isExpand(), true);
+	public boolean toggleExpansion() {
+		return this.setExpanded(!isExpanded(), true);
 	}
 
 	/**
-	 * @param isExpand
+	 * @param isExpanded
 	 * @return
 	 */
-	public boolean setExpand(boolean isExpand) {
-		return this.setExpand(isExpand, false);
+	public boolean setExpanded(boolean isExpanded) {
+		return this.setExpanded(isExpanded, false);
 	}
 
 	/**
-	 * @param isExpand
-	 * @param shouldAnimation
+	 * @param isExpanded
+	 * @param shouldAnimate
 	 * @return
 	 */
-	public boolean setExpand(boolean isExpand, boolean shouldAnimation) {
+	public boolean setExpanded(boolean isExpanded, boolean shouldAnimate) {
 		boolean result = false;
 		View child = findExpandableView();
 		if (child != null) {
-			if (isExpand != this.isExpand()) {
-				if (isExpand) {
-					result = this.expand(child, shouldAnimation);
+			if (isExpanded != this.isExpanded()) {
+				if (isExpanded) {
+					result = this.expand(child, shouldAnimate);
 				} else {
-					result = this.collapse(child, shouldAnimation);
+					result = this.collapse(child, shouldAnimate);
 				}
 			}
 		}
@@ -191,32 +191,32 @@ public class ExpandableLayout extends LinearLayout {
 
 	/**
 	 * @param child
-	 * @param shouldAnimation
+	 * @param shouldAnimate
 	 * @return
 	 */
-	private boolean expand(View child, boolean shouldAnimation) {
+	private boolean expand(View child, boolean shouldAnimate) {
 		boolean result = false;
 		if (!checkExpandableView(child)) {
 			throw new IllegalArgumentException(
 					"expand(), View is not expandableView");
 		}
 		LayoutParams p = (LayoutParams) child.getLayoutParams();
-		if (mFirstLayout || mAttachedToWindow == false || !shouldAnimation) {
-			p.isOpen = true;
+		if (mFirstLayout || mAttachedToWindow == false || !shouldAnimate) {
+			p.isExpanded = true;
 			p.isExpanding = false;
 			p.height = p.originalHeight;
 			child.setVisibility(View.VISIBLE);
 			result = true;
 		} else {
-			if (!p.isOpen && !p.isExpanding) {
-				this.playExpandAnima(child);
+			if (!p.isExpanded && !p.isExpanding) {
+				this.playExpandAnimation(child);
 				result = true;
 			}
 		}
 		return result;
 	}
 
-	private void playExpandAnima(final View child) {
+	private void playExpandAnimation(final View child) {
 		final LayoutParams p = (LayoutParams) child.getLayoutParams();
 		if (p.isExpanding) {
 			return;
@@ -275,21 +275,21 @@ public class ExpandableLayout extends LinearLayout {
 		}
 		LayoutParams p = (LayoutParams) child.getLayoutParams();
 		if (mFirstLayout || mAttachedToWindow == false || !shouldAnimation) {
-			p.isOpen = false;
+			p.isExpanded = false;
 			p.isExpanding = false;
 			p.height = p.originalHeight;
 			child.setVisibility(View.GONE);
 			result = true;
 		} else {
-			if (p.isOpen && !p.isExpanding) {
-				this.playCollapseAnima(child);
+			if (p.isExpanded && !p.isExpanding) {
+				this.playCollapseAnimation(child);
 				result = true;
 			}
 		}
 		return result;
 	}
 
-	private void playCollapseAnima(final View child) {
+	private void playCollapseAnimation(final View child) {
 		final LayoutParams p = (LayoutParams) child.getLayoutParams();
 		if (p.isExpanding) {
 			return;
@@ -346,21 +346,21 @@ public class ExpandableLayout extends LinearLayout {
 	private void dispatchOffset(View child) {
 		if (mListener != null) {
 			mListener.onExpandOffset(this, child, child.getHeight(),
-					!isExpand());
+					!isExpanded());
 		}
 	}
 
 	private void performToggleState(View child) {
 		LayoutParams p = (LayoutParams) child.getLayoutParams();
-		if (p.isOpen) {
-			p.isOpen = false;
+		if (p.isExpanded) {
+			p.isExpanded = false;
 			if (mListener != null) {
 				mListener.onToggle(this, child, false);
 			}
 			child.setVisibility(View.GONE);
 			p.height = p.originalHeight;
 		} else {
-			p.isOpen = true;
+			p.isExpanded = true;
 			if (mListener != null) {
 				mListener.onToggle(this, child, true);
 			}
@@ -371,8 +371,8 @@ public class ExpandableLayout extends LinearLayout {
 	@Override
 	protected Parcelable onSaveInstanceState() {
 		SavedState ss = new SavedState(super.onSaveInstanceState());
-		if (isExpand()) {
-			ss.isOpen = true;
+		if (isExpanded()) {
+			ss.isExpanded = true;
 		}
 		return ss;
 	}
@@ -381,21 +381,21 @@ public class ExpandableLayout extends LinearLayout {
 	protected void onRestoreInstanceState(Parcelable state) {
 		SavedState ss = (SavedState) state;
 		super.onRestoreInstanceState(ss.getSuperState());
-		if (ss.isOpen) {
+		if (ss.isExpanded) {
 			View child = findExpandableView();
 			if (child != null) {
-				setExpand(true);
+				setExpanded(true);
 			}
 		}
 	}
 
 	private static class SavedState extends BaseSavedState {
 
-		boolean isOpen;
+		boolean isExpanded;
 
 		public SavedState(Parcel source) {
 			super(source);
-			isOpen = source.readInt() == 1;
+			isExpanded = source.readInt() == 1;
 		}
 
 		public SavedState(Parcelable superState) {
@@ -405,7 +405,7 @@ public class ExpandableLayout extends LinearLayout {
 		@Override
 		public void writeToParcel(Parcel dest, int flags) {
 			super.writeToParcel(dest, flags);
-			dest.writeInt(isOpen ? 1 : 0);
+			dest.writeInt(isExpanded ? 1 : 0);
 		}
 
 		@SuppressWarnings("unused")
@@ -448,7 +448,7 @@ public class ExpandableLayout extends LinearLayout {
 	public static class LayoutParams extends LinearLayout.LayoutParams {
 		private static final int NO_MESURED_HEIGHT = -10;
 		int originalHeight = NO_MESURED_HEIGHT;
-		boolean isOpen;
+		boolean isExpanded;
 		boolean canExpand;
 		boolean isExpanding;
 
@@ -494,9 +494,9 @@ public class ExpandableLayout extends LinearLayout {
 	}
 
 	public static interface OnExpandListener {
-		public void onToggle(ExpandableLayout view, View child, boolean isExpand);
+		public void onToggle(ExpandableLayout view, View child, boolean isExpanded);
 
 		public void onExpandOffset(ExpandableLayout view, View child,
-				float offset, boolean toExpanding);
+				float offset, boolean isExpanding);
 	}
 }

@@ -2,6 +2,7 @@ bin
 gen
 build/
 .idea
+.metadata
 *.iml
 out
 .DS_Store

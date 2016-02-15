@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ListViewExample extends Activity {
 
-	private List<Info> mInfos;
+	private List<Item> mItems;
 	private ListView mListView;
 	private MyAdapter mAdapter;
 
@@ -26,12 +26,12 @@ public class ListViewExample extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_listview);
 
-		mInfos = new ArrayList<>();
+		mItems = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
-			mInfos.add(new Info());
+			mItems.add(new Item());
 		}
 
-		mAdapter = new MyAdapter(mInfos);
+		mAdapter = new MyAdapter(mItems);
 		mListView = (ListView) this.findViewById(R.id.listview);
 		mListView.setAdapter(mAdapter);
 	}
@@ -42,7 +42,7 @@ public class ListViewExample extends Activity {
 		public void onClick(View v) {
 			ViewHolder holder = (ViewHolder) v.getTag();
 			boolean result = holder.expandableLayout.toggleExpansion();
-			Info info = mInfos.get(holder.position);
+			Item info = mItems.get(holder.position);
 			info.isExpand = result ? !info.isExpand : info.isExpand;
 		}
 	};
@@ -57,27 +57,27 @@ public class ListViewExample extends Activity {
 		public void onExpandOffset(ExpandableLayout view, View child,
 				float offset, boolean isExpanding) {
 			ViewHolder holder = (ViewHolder) view.getTag();
-			if (holder.position == mInfos.size() - 1) {
+			if (holder.position == mItems.size() - 1) {
 				mListView.setSelection(holder.position);
 			}
 		}
 	};
 
 	private class MyAdapter extends BaseAdapter {
-		private List<Info> infos;
+		private List<Item> items;
 
-		public MyAdapter(List<Info> infos) {
-			this.infos = infos;
+		public MyAdapter(List<Item> items) {
+			this.items = items;
 		}
 
 		@Override
 		public int getCount() {
-			return infos.size();
+			return items.size();
 		}
 
 		@Override
-		public Info getItem(int position) {
-			return infos.get(position);
+		public Item getItem(int position) {
+			return items.get(position);
 		}
 
 		@Override
@@ -106,9 +106,9 @@ public class ListViewExample extends Activity {
 				view = convertView;
 				holder = (ViewHolder) view.getTag();
 			}
-			Info info = getItem(position);
+			Item item = getItem(position);
 			holder.position = position;
-			holder.expandableLayout.setExpanded(info.isExpand, false);
+			holder.expandableLayout.setExpanded(item.isExpand, false);
 			return view;
 		}
 	}
@@ -119,7 +119,7 @@ public class ListViewExample extends Activity {
 		ImageView imageView;
 	}
 
-	static class Info {
+	static class Item {
 		boolean isExpand;
 	}
 }

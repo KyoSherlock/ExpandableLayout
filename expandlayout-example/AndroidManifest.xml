@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".LinearLayoutExample"></activity>
         <activity android:name=".ListViewExample"></activity>
+        <activity android:name=".RecyclerViewExample"></activity>
     </application>
 
 </manifest>

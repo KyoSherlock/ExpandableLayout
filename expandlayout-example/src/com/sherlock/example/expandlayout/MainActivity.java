@@ -16,6 +16,8 @@ public class MainActivity extends Activity {
 				mOnClickListener);
 		this.findViewById(R.id.in_listview)
 				.setOnClickListener(mOnClickListener);
+		this.findViewById(R.id.in_recyclerview).setOnClickListener(
+				mOnClickListener);
 	}
 
 	private OnClickListener mOnClickListener = new OnClickListener() {
@@ -31,6 +33,11 @@ public class MainActivity extends Activity {
 			case R.id.in_listview: {
 				startActivity(new Intent(MainActivity.this,
 						ListViewExample.class));
+				break;
+			}
+			case R.id.in_recyclerview: {
+				startActivity(new Intent(MainActivity.this,
+						RecyclerViewExample.class));
 				break;
 			}
 			default:

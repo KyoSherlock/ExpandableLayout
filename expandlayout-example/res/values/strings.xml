@@ -7,5 +7,6 @@
 
     <string name="in_linearlayout">In LinearLayout</string>
     <string name="in_listview">In ListView</string>
+    <string name="in_recyclerview">In RecyclerView</string>
     
 </resources>

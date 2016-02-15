@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;activity_listview.xml&apos; to &apos;activity_listview.xml&apos;&#x0D;&#x0A;- Original project: &apos;expandlayout-example&apos;&#x0D;&#x0A;- Destination element: &apos;activity_listview.xml&apos;&#x0D;&#x0A;- Original element: &apos;activity_listview.xml&apos;" description="Copy file" element1="res/layout/activity_listview.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1453160858562" target="/expandlayout-example/res/layout/activity_listview.xml" units="0" version="1.0"/>
-</session>

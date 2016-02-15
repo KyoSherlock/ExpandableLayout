@@ -4,5 +4,4 @@ build/
 .idea
 *.iml
 out
-.metadata
 .DS_Store

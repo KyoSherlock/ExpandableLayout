@@ -32,7 +32,7 @@ public class RecyclerViewExample extends Activity {
 		this.setContentView(R.layout.activity_recyclerview);
 
 		mItems = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			mItems.add(new Item());
 		}
 		mRecyclerView = (RecyclerView) this.findViewById(R.id.recyclerview);
@@ -153,10 +153,9 @@ public class RecyclerViewExample extends Activity {
 				viewHolder.expandableLayout.setExpanded(item.isExpand, false);
 				viewHolder.textView
 						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
-				viewHolder.expandableTextView
-						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
 			}
 		}
+
 	}
 
 	static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -181,8 +180,7 @@ public class RecyclerViewExample extends Activity {
 			expandableLayout = (ExpandableLayout) itemView
 					.findViewById(R.id.expandlayout);
 			textView = (TextView) itemView.findViewById(R.id.textview);
-			expandableTextView = (TextView) itemView
-					.findViewById(R.id.expandable_textview);
+			expandableTextView = (TextView) itemView.findViewById(R.id.expandable_textview);
 		}
 	}
 

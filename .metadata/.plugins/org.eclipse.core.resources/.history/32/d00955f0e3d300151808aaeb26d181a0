@@ -32,7 +32,7 @@ public class RecyclerViewExample extends Activity {
 		this.setContentView(R.layout.activity_recyclerview);
 
 		mItems = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			mItems.add(new Item());
 		}
 		mRecyclerView = (RecyclerView) this.findViewById(R.id.recyclerview);
@@ -132,8 +132,8 @@ public class RecyclerViewExample extends Activity {
 				View itemView = inflater.inflate(
 						R.layout.item_expandable_textview, parent, false);
 				TextViewHolder holder = new TextViewHolder(itemView);
-				holder.textView.setOnClickListener(mOnClickListener);
-				holder.textView.setTag(holder);
+				holder.imageView.setOnClickListener(mOnClickListener);
+				holder.imageView.setTag(holder);
 				holder.expandableLayout.setTag(holder);
 				holder.expandableLayout.setOnExpandListener(mOnExpandListener);
 				return holder;
@@ -153,10 +153,9 @@ public class RecyclerViewExample extends Activity {
 				viewHolder.expandableLayout.setExpanded(item.isExpand, false);
 				viewHolder.textView
 						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
-				viewHolder.expandableTextView
-						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
 			}
 		}
+
 	}
 
 	static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -173,16 +172,15 @@ public class RecyclerViewExample extends Activity {
 
 	static class TextViewHolder extends RecyclerView.ViewHolder {
 		ExpandableLayout expandableLayout;
-		TextView textView;
 		TextView expandableTextView;
+		TextView textView;
 
 		public TextViewHolder(View itemView) {
 			super(itemView);
 			expandableLayout = (ExpandableLayout) itemView
 					.findViewById(R.id.expandlayout);
+			imageView = (ImageView) itemView.findViewById(R.id.imageview);
 			textView = (TextView) itemView.findViewById(R.id.textview);
-			expandableTextView = (TextView) itemView
-					.findViewById(R.id.expandable_textview);
 		}
 	}
 

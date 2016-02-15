@@ -44,17 +44,10 @@ public class RecyclerViewExample extends Activity {
 	private OnClickListener mOnClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			if (v.getTag() instanceof MyViewHolder) {
-				MyViewHolder holder = (MyViewHolder) v.getTag();
-				boolean result = holder.expandableLayout.toggleExpansion();
-				Item item = mItems.get(holder.getAdapterPosition());
-				item.isExpand = result ? !item.isExpand : item.isExpand;
-			} else if (v.getTag() instanceof TextViewHolder) {
-				TextViewHolder holder = (TextViewHolder) v.getTag();
-				boolean result = holder.expandableLayout.toggleExpansion();
-				Item item = mItems.get(holder.getAdapterPosition());
-				item.isExpand = result ? !item.isExpand : item.isExpand;
-			}
+			MyViewHolder holder = (MyViewHolder) v.getTag();
+			boolean result = holder.expandableLayout.toggleExpansion();
+			Item item = mItems.get(holder.getAdapterPosition());
+			item.isExpand = result ? !item.isExpand : item.isExpand;
 		}
 	};
 
@@ -71,20 +64,19 @@ public class RecyclerViewExample extends Activity {
 		@Override
 		public void onExpandOffset(ExpandableLayout view, View child,
 				float offset, boolean isExpanding) {
-			if (view.getTag() instanceof MyViewHolder) {
-				final MyViewHolder holder = (MyViewHolder) view.getTag();
-				if (holder.getAdapterPosition() == mItems.size() - 1) {
-					if (!isScrollingToBottom) {
-						isScrollingToBottom = true;
-						mRecyclerView.postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								isScrollingToBottom = false;
-								mRecyclerView.scrollToPosition(holder
-										.getAdapterPosition());
-							}
-						}, 100);
-					}
+			final MyViewHolder holder = (MyViewHolder) view.getTag();
+			if (holder.getAdapterPosition() == mItems.size() - 1) {
+				if (!isScrollingToBottom) {
+					isScrollingToBottom = true;
+					mRecyclerView.postDelayed(new Runnable() {
+
+						@Override
+						public void run() {
+							isScrollingToBottom = false;
+							mRecyclerView.scrollToPosition(holder
+									.getAdapterPosition());
+						}
+					}, 100);
 				}
 			}
 		}
@@ -129,11 +121,11 @@ public class RecyclerViewExample extends Activity {
 			} else {
 				LayoutInflater inflater = LayoutInflater.from(parent
 						.getContext());
-				View itemView = inflater.inflate(
-						R.layout.item_expandable_textview, parent, false);
+				View itemView = inflater.inflate(R.layout.item_listview,
+						parent, false);
 				TextViewHolder holder = new TextViewHolder(itemView);
-				holder.textView.setOnClickListener(mOnClickListener);
-				holder.textView.setTag(holder);
+				holder.imageView.setOnClickListener(mOnClickListener);
+				holder.imageView.setTag(holder);
 				holder.expandableLayout.setTag(holder);
 				holder.expandableLayout.setOnExpandListener(mOnExpandListener);
 				return holder;
@@ -151,12 +143,9 @@ public class RecyclerViewExample extends Activity {
 				TextViewHolder viewHolder = (TextViewHolder) holder;
 				Item item = items.get(position);
 				viewHolder.expandableLayout.setExpanded(item.isExpand, false);
-				viewHolder.textView
-						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
-				viewHolder.expandableTextView
-						.setText("TextView Example\nTextView Example\nTextView Example\nTextView Example");
 			}
 		}
+
 	}
 
 	static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -173,16 +162,15 @@ public class RecyclerViewExample extends Activity {
 
 	static class TextViewHolder extends RecyclerView.ViewHolder {
 		ExpandableLayout expandableLayout;
+		ImageView imageView;
 		TextView textView;
-		TextView expandableTextView;
 
 		public TextViewHolder(View itemView) {
 			super(itemView);
 			expandableLayout = (ExpandableLayout) itemView
 					.findViewById(R.id.expandlayout);
+			imageView = (ImageView) itemView.findViewById(R.id.imageview);
 			textView = (TextView) itemView.findViewById(R.id.textview);
-			expandableTextView = (TextView) itemView
-					.findViewById(R.id.expandable_textview);
 		}
 	}
 

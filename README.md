@@ -36,7 +36,7 @@ Below is an example of a ExpandableLayout, what you need to do is just to set ca
 
 # Changelog
 
-### Version: 1.1
+### Version: 1.0
   * Initial Build
   
 ### Version: 1.2

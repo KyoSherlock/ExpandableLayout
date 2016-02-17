@@ -36,10 +36,11 @@ Below is an example of a ExpandableLayout, what you need to do is just to set ca
 
 # Changelog
 
-### Version: 1.0
-
+### Version: 1.1
   * Initial Build
-
+### Version: 1.2
+  * Improve field and method names
+  
 # License
 
     Copyright 2015, KyoSherlock

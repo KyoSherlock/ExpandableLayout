@@ -3,6 +3,7 @@
 
     <declare-styleable name="ExpandableLayout">
         <attr name="canExpand" format="boolean" />
+        <attr name="expanded" format="boolean" />
     </declare-styleable>
 
 </resources>

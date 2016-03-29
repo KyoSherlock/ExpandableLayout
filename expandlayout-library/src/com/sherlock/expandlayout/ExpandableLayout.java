@@ -458,7 +458,7 @@ public class ExpandableLayout extends LinearLayout {
 					R.styleable.ExpandableLayout);
 			canExpand = a.getBoolean(R.styleable.ExpandableLayout_canExpand,
 					false);
-			isExpanded = a.getBoolean(R.styleable.ExpandableLayout_expanded,
+			isExpanded = a.getBoolean(R.styleable.ExpandableLayout_startExpanded,
 					false);
 			originalHeight = this.height;
 			a.recycle();

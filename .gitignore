@@ -1,7 +1,8 @@
-bin
-gen
-build/
-.idea
 *.iml
-out
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
 .DS_Store
+/build
+/captures

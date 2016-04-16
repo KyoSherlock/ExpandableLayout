@@ -2,14 +2,14 @@
 
 This ExpandableLayout is like a smooth expand/collapse animation CheckBox, so it can be used anyplace (ListView or RecyclerView).
 
-![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/1.png) ![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/3.png)
+![](https://github.com/KyoSherlock/ExpandableLayout/raw/master/screenshots/expandablelayout_screenshot.gif)
 
 # Usage
 
 Below is an example of a ExpandableLayout, what you need to do is just to set canExpand="true" to a child view/viewgroup.
 
 ```xml
-    <com.sherlock.expandlayout.ExpandableLayout
+    <com.kyo.expandablelayout.ExpandableLayout
         android:id="@+id/expandlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@ Below is an example of a ExpandableLayout, what you need to do is just to set ca
             android:scaleType="centerCrop"
             android:src="@drawable/child"
             app:canExpand="true" />
-    </com.sherlock.expandlayout.ExpandableLayout>
+    </com.kyo.expandable.ExpandableLayout>
 ```
 
 # Changelog

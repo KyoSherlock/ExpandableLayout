@@ -1,3 +1,18 @@
+/**
+ * Copyright 2015, KyoSherlock
+ * <p/>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.kyo.expandablelayout;
 
 import android.animation.Animator;
@@ -36,14 +51,14 @@ public class ExpandableLayout extends LinearLayout {
 	}
 
 	public ExpandableLayout(Context context, AttributeSet attrs,
-			int defStyleAttr) {
+							int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		this.init(context);
 	}
 
 	@TargetApi(21)
 	public ExpandableLayout(Context context, AttributeSet attrs,
-			int defStyleAttr, int defStyleRes) {
+							int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
 		this.init(context);
 	}
@@ -62,7 +77,7 @@ public class ExpandableLayout extends LinearLayout {
 
 			if (p.weight != 0) {
 				throw new IllegalArgumentException(
-						"ExpandableView can't use weight");
+					"ExpandableView can't use weight");
 			}
 
 			if (!p.isExpanded && !p.isExpanding) {
@@ -125,7 +140,7 @@ public class ExpandableLayout extends LinearLayout {
 	public View findExpandableView() {
 		for (int i = 0; i < this.getChildCount(); i++) {
 			LayoutParams p = (LayoutParams) this.getChildAt(i)
-					.getLayoutParams();
+				.getLayoutParams();
 			if (p.canExpand) {
 				return this.getChildAt(i);
 			}
@@ -198,7 +213,7 @@ public class ExpandableLayout extends LinearLayout {
 		boolean result = false;
 		if (!checkExpandableView(child)) {
 			throw new IllegalArgumentException(
-					"expand(), View is not expandableView");
+				"expand(), View is not expandableView");
 		}
 		LayoutParams p = (LayoutParams) child.getLayoutParams();
 		if (mFirstLayout || mAttachedToWindow == false || !shouldAnimate) {
@@ -229,7 +244,7 @@ public class ExpandableLayout extends LinearLayout {
 
 		mExpandAnimator = ObjectAnimator.ofInt(p, "height", 0, measuredHeight);
 		mExpandAnimator.setDuration(getContext().getResources().getInteger(
-				android.R.integer.config_shortAnimTime));
+			android.R.integer.config_shortAnimTime));
 		mExpandAnimator.addUpdateListener(new AnimatorUpdateListener() {
 			@Override
 			public void onAnimationUpdate(ValueAnimator animation) {
@@ -271,7 +286,7 @@ public class ExpandableLayout extends LinearLayout {
 		boolean result = false;
 		if (!checkExpandableView(child)) {
 			throw new IllegalArgumentException(
-					"collapse(), View is not expandableView");
+				"collapse(), View is not expandableView");
 		}
 		LayoutParams p = (LayoutParams) child.getLayoutParams();
 		if (mFirstLayout || mAttachedToWindow == false || !shouldAnimation) {
@@ -301,7 +316,7 @@ public class ExpandableLayout extends LinearLayout {
 
 		mExpandAnimator = ObjectAnimator.ofInt(p, "height", measuredHeight, 0);
 		mExpandAnimator.setDuration(getContext().getResources().getInteger(
-				android.R.integer.config_shortAnimTime));
+			android.R.integer.config_shortAnimTime));
 		mExpandAnimator.addUpdateListener(new AnimatorUpdateListener() {
 			@Override
 			public void onAnimationUpdate(ValueAnimator animation) {
@@ -346,7 +361,7 @@ public class ExpandableLayout extends LinearLayout {
 	private void dispatchOffset(View child) {
 		if (mListener != null) {
 			mListener.onExpandOffset(this, child, child.getHeight(),
-					!isExpanded());
+				!isExpanded());
 		}
 	}
 
@@ -431,12 +446,12 @@ public class ExpandableLayout extends LinearLayout {
 	@Override
 	protected LayoutParams generateDefaultLayoutParams() {
 		return new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+			LayoutParams.WRAP_CONTENT);
 	}
 
 	@Override
 	protected LayoutParams generateLayoutParams(
-			android.view.ViewGroup.LayoutParams p) {
+		android.view.ViewGroup.LayoutParams p) {
 		return new LayoutParams(p);
 	}
 
@@ -455,11 +470,11 @@ public class ExpandableLayout extends LinearLayout {
 		public LayoutParams(Context c, AttributeSet attrs) {
 			super(c, attrs);
 			TypedArray a = c.obtainStyledAttributes(attrs,
-					R.styleable.ExpandableLayout);
+				R.styleable.ExpandableLayout);
 			canExpand = a.getBoolean(R.styleable.ExpandableLayout_canExpand,
-					false);
+				false);
 			isExpanded = a.getBoolean(R.styleable.ExpandableLayout_startExpanded,
-					false);
+				false);
 			originalHeight = this.height;
 			a.recycle();
 		}

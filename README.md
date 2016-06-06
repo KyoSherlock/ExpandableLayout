@@ -34,7 +34,7 @@ Below is an example of a ExpandableLayout, what you need to do is just to set ca
     </com.kyo.expandable.ExpandableLayout>
 ```
 # Proguard
-Please add the following line in the proguard-rules.pro of your main module. It is because I use ObjectAnimator that maps "height" -> setHeight
+Please add the following line in the proguard-rules.pro of your main module. It is because I use ObjectAnimator that maps "height" -> setHeight(ExpandableLayout.LayoutParam.setHeight).
 
 ```xml
 -keep class com.kyo.expandablelayout.** {*;}
